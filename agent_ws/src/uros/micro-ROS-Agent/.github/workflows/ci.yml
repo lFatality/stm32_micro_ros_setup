@@ -1,0 +1,38 @@
+name: CI micro-ROS Agent
+
+on:
+    pull_request:
+      branches: 
+        - '**'
+
+jobs:
+
+    microros_agent_ci:
+        runs-on: ubuntu-20.04
+        container: microros/base:foxy
+
+        steps:
+        - uses: actions/checkout@v2
+          with:
+            path: urosagent
+
+        - name: Download dependencies
+          run: |
+            apt update
+            cd /uros_ws
+            . /opt/ros/$ROS_DISTRO/setup.sh
+            . install/local_setup.sh
+            rosdep update
+            ros2 run micro_ros_setup create_agent_ws.sh 
+        
+        - name: Patch branch
+          run: |
+            rm -rf /uros_ws/src/uros/micro-ROS-Agent/*
+            cp -R urosagent/* /uros_ws/src/uros/micro-ROS-Agent/
+
+        - name: Build
+          run:  |
+            cd /uros_ws
+            . /opt/ros/$ROS_DISTRO/setup.sh
+            . install/local_setup.sh
+            ros2 run micro_ros_setup build_agent.sh 
