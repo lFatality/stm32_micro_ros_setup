@@ -295,7 +295,7 @@ In my case I can see some prints on the UART before entering the while loop. The
 
 ### **Solution 2**
 
-You need a running micro-ROS agent. See steps 19.) and following. If you have an agent running but it still doesn't work, look at problem / solution 7.
+You need a running micro-ROS agent. See steps 19.) and following. If you have an agent running but it still doesn't work, look at problem / solution 6.
 
 ### **Problem 3**
 
