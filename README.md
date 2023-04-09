@@ -344,7 +344,7 @@ but it's not creating a participant or topic. I can't receive my data.
 
 ### **Solution 6**
 
-Check that you don't have another serial program (putty, hterm, gtkterm, ...) connected to your device (at least not to that same UART).
+Check that you don't have another serial program (putty, hterm, gtkterm, ...) connected to your device (at least not to that same UART). Also be sure that your hardware setup is correct, e.g. that you have GND connected between the two nodes when using a UART connection.
 
 ### **Problem 7**
 
